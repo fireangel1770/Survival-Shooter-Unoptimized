@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
     bool isDead;
     bool damaged;
 
-
+    string animationDeath = "Die"; 
     void Awake ()
     {
         anim = GetComponent <Animator> ();
@@ -70,7 +70,7 @@ public class PlayerHealth : MonoBehaviour
 
         playerShooting.DisableEffects ();
 
-        anim.SetTrigger ("Die");
+        anim.SetTrigger (animationDeath);
 
         playerAudio.clip = deathClip;
         playerAudio.Play ();
