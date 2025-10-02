@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
 	public float speed = 6f;
@@ -10,7 +10,10 @@ public class PlayerMovement : MonoBehaviour
 	private int floorMask;
 	private float camRayLength = 100f;
 
-	void Awake()
+
+	private string animationWalking = "IsWalking";
+
+    void Awake()
 	{
 		floorMask = LayerMask.GetMask("Floor");
 		anim = GetComponent<Animator>();
@@ -26,7 +29,15 @@ public class PlayerMovement : MonoBehaviour
 		Turning();
 		Animating(h, v);
 	}
+	void OnMovement(InputValue v)
+	{
+		//Vector2 inputVector = v.Get<Vector2>();
+		//movement = new Vector3(inputVector.x, 0, inputVector.y);
+		//Vector3 vector3 = inputVector;
+		//Move(vector3.x, vector3.y);
+        //Animating(inputVector.x, inputVector.y);
 
+    }
 	void Move(float h, float v)
 	{
 		movement.Set(h, 0f, v);
@@ -53,6 +64,6 @@ public class PlayerMovement : MonoBehaviour
 	{
 		bool walking = h != 0f || v != 0f;
 
-		anim.SetBool("IsWalking", walking);
+		anim.SetBool(animationWalking, walking);
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -16,7 +17,10 @@ public class EnemyHealth : MonoBehaviour
     bool isDead;
     bool isSinking;
 
+    private string IsDead = "Dead";
 
+    public UnityEvent<int> UpdateScore;
+    
     void Awake ()
     {
         anim = GetComponent <Animator> ();
@@ -62,7 +66,7 @@ public class EnemyHealth : MonoBehaviour
 
         capsuleCollider.isTrigger = true;
 
-        anim.SetTrigger ("Dead");
+        anim.SetTrigger (IsDead);
 
         enemyAudio.clip = deathClip;
         enemyAudio.Play ();
@@ -74,7 +78,7 @@ public class EnemyHealth : MonoBehaviour
         GetComponent <UnityEngine.AI.NavMeshAgent> ().enabled = false;
         GetComponent <Rigidbody> ().isKinematic = true;
         isSinking = true;
-        ScoreManager.score += scoreValue;
+        UpdateScore?.Invoke(scoreValue);
         Destroy (gameObject, 2f);
     }
 }

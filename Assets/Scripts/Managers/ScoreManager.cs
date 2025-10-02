@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
 public class ScoreManager : MonoBehaviour
 {
     public static int score;
@@ -15,7 +14,10 @@ public class ScoreManager : MonoBehaviour
         score = 0;
     }
 
-
+    public void AddScore(int addedScore)
+    {
+        score += addedScore;
+    }
     void Update ()
     {
         text.text = "Score: " + score;

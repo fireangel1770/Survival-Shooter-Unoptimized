@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+//using UnityEngine.InputSystem;
+
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -6,6 +8,7 @@ public class PlayerShooting : MonoBehaviour
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
 
+    [SerializeField] 
 
     float timer;
     Ray shootRay = new Ray();
@@ -32,17 +35,20 @@ public class PlayerShooting : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-		if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0)
-        {
-            Shoot ();
-        }
-
-        if(timer >= timeBetweenBullets * effectsDisplayTime)
+        if (timer >= timeBetweenBullets * effectsDisplayTime)
         {
             DisableEffects ();
         }
     }
 
+    void OnFire()
+    {
+        // I don't know how to make it shoot while holding the button   
+        if (timer >= timeBetweenBullets && Time.timeScale != 0)
+        {
+            Shoot();
+        }
+    }
 
     public void DisableEffects ()
     {
