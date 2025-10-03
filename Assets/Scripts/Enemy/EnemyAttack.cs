@@ -17,6 +17,8 @@ public class EnemyAttack : MonoBehaviour
 
     private string playerDead = "PlayerDead";
 
+    [SerializeField] HpOS HpVal;
+
     void Awake ()
     {
         player = GameObject.FindGameObjectWithTag ("Player");
@@ -53,7 +55,7 @@ public class EnemyAttack : MonoBehaviour
             Attack ();
         }
 
-        if(playerHealth.currentHealth <= 0)
+        if(HpVal.currentPlayerHealth <= 0)
         {
             anim.SetTrigger (playerDead);
         }
@@ -64,7 +66,7 @@ public class EnemyAttack : MonoBehaviour
     {
         timer = 0f;
 
-        if(playerHealth.currentHealth > 0)
+        if(HpVal.currentPlayerHealth > 0)
         {
             playerHealth.TakeDamage (attackDamage);
         }

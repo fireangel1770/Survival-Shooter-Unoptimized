@@ -6,7 +6,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject enemy;
     public float spawnTime = 3f;
     public Transform[] spawnPoints;
-
+    [SerializeField] HpOS playerHpVal;
 
     void Start ()
     {
@@ -15,7 +15,7 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn ()
     {
-        if(playerHealth.currentHealth <= 0f)
+        if(playerHpVal.currentPlayerHealth <= 0f)
         {
             return;
         }

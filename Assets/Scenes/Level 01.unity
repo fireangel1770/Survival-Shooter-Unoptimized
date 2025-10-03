@@ -215,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 032fee10908bae143b012fcc8b691c35,
     type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -226,12 +226,48 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 72810519}
+        m_TargetAssemblyTypeName: PlayerShooting, Assembly-CSharp
+        m_MethodName: OnFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fc382477-736e-445b-9374-ef3a35d24c27
+    m_ActionName: 'PlayerInputs/Fire[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 62db6d0f-8f84-43c9-b1af-8a6fbb9af3b6
+    m_ActionName: 'PlayerInputs/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9dd938ea-a0c5-49c3-8f7e-9489f52d2bd2
+    m_ActionName: 'PlayerInputs/Escape[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerInputs
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &72810519 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114508338712467710, guid: 9e3e72cd89ef44f97afe08f9baaabc18,
+    type: 3}
+  m_PrefabInstance: {fileID: 1299572195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72810510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c63be2a8918c741863160b9d9da122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &152261542
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +404,43 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!1 &270612795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4873586722860913075, guid: 4f9246a1074c22d468bc4ee5072472d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 7637693821818400566}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &270612799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270612795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 032fee10908bae143b012fcc8b691c35,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: PlayerInputs
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &364300062
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,6 +1035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1299572197}
   restartDelay: 5
+  playerHpVal: {fileID: 11400000, guid: f03ea1a5744ae104aadd8e358408dba2, type: 2}
 --- !u!95 &1114380159
 Animator:
   serializedVersion: 7
@@ -1282,6 +1356,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114762724205432510, guid: 9e3e72cd89ef44f97afe08f9baaabc18,
         type: 3}
+      propertyPath: HpVal
+      value: 
+      objectReference: {fileID: 11400000, guid: f03ea1a5744ae104aadd8e358408dba2,
+        type: 2}
+    - target: {fileID: 114762724205432510, guid: 9e3e72cd89ef44f97afe08f9baaabc18,
+        type: 3}
       propertyPath: damageImage
       value: 
       objectReference: {fileID: 152261544}
@@ -1331,6 +1411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1456155940}
+  - component: {fileID: 1456155941}
   m_Layer: 0
   m_Name: ZomBunnySpawnPoint
   m_TagString: Untagged
@@ -1353,6 +1434,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 130, z: 0}
+--- !u!114 &1456155941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456155939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61fcaf884ca2d5a46bdafbde84483e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 114926325598140600, guid: 4e3b7f611582d4dc7a9dd318242ed5e3,
+    type: 3}
+  enemyAmount: 0
 --- !u!1 &1830089837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1805,6 +1901,7 @@ MonoBehaviour:
   spawnTime: 3
   spawnPoints:
   - {fileID: 1456155940}
+  playerHpVal: {fileID: 11400000, guid: f03ea1a5744ae104aadd8e358408dba2, type: 2}
 --- !u!4 &2135234548
 Transform:
   m_ObjectHideFlags: 0
@@ -1837,6 +1934,7 @@ MonoBehaviour:
   spawnTime: 10
   spawnPoints:
   - {fileID: 694235421}
+  playerHpVal: {fileID: 11400000, guid: f03ea1a5744ae104aadd8e358408dba2, type: 2}
 --- !u!114 &2135234550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1854,6 +1952,7 @@ MonoBehaviour:
   spawnTime: 3
   spawnPoints:
   - {fileID: 1084502847}
+  playerHpVal: {fileID: 11400000, guid: f03ea1a5744ae104aadd8e358408dba2, type: 2}
 --- !u!1001 &7637693821818400566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1925,7 +2024,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4873586722860913075, guid: 4f9246a1074c22d468bc4ee5072472d4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 270612799}
   m_SourcePrefab: {fileID: 100100000, guid: 4f9246a1074c22d468bc4ee5072472d4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

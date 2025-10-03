@@ -6,14 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int startingHealth = 100;
-    public int currentHealth;
+
     public Slider healthSlider;
     public Image damageImage;
     public AudioClip deathClip;
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
-
+    [SerializeField] public HpOS HpVal;
 
     Animator anim;
     AudioSource playerAudio;
@@ -25,11 +24,11 @@ public class PlayerHealth : MonoBehaviour
     string animationDeath = "Die"; 
     void Awake ()
     {
+        HpVal.currentPlayerHealth = HpVal.StartingPlayerHealth;
         anim = GetComponent <Animator> ();
         playerAudio = GetComponent <AudioSource> ();
         playerMovement = GetComponent <PlayerMovement> ();
         playerShooting = GetComponentInChildren <PlayerShooting> ();
-        currentHealth = startingHealth;
     }
 
 
@@ -51,13 +50,13 @@ public class PlayerHealth : MonoBehaviour
     {
         damaged = true;
 
-        currentHealth -= amount;
+        HpVal.currentPlayerHealth -= amount;
 
-        healthSlider.value = currentHealth;
+        healthSlider.value = HpVal.currentPlayerHealth;
 
         playerAudio.Play ();
 
-        if(currentHealth <= 0 && !isDead)
+        if(HpVal.currentPlayerHealth <= 0 && !isDead)
         {
             Death ();
         }

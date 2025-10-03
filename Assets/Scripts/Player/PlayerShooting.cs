@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 //using UnityEngine.InputSystem;
 
 
@@ -7,6 +8,8 @@ public class PlayerShooting : MonoBehaviour
     public int damagePerShot = 20;
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
+
+    bool isShooting = false;
 
     [SerializeField] 
 
@@ -34,6 +37,10 @@ public class PlayerShooting : MonoBehaviour
     void Update ()
     {
         timer += Time.deltaTime;
+        if ((timer >= timeBetweenBullets && Time.timeScale != 0) && isShooting == true)
+        {
+            Shoot();
+        }
 
         if (timer >= timeBetweenBullets * effectsDisplayTime)
         {
@@ -41,12 +48,21 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    void OnFire()
+    public void OnFire(InputAction.CallbackContext ctx)
     {
-        // I don't know how to make it shoot while holding the button   
-        if (timer >= timeBetweenBullets && Time.timeScale != 0)
+        Debug.Log("Has shoot");
+        //isShooting = !isShooting;
+        if (ctx.action.WasPerformedThisFrame())
         {
-            Shoot();
+            Debug.Log("Is Shoot True");
+            isShooting = true;
+        }
+
+        if (ctx.action.WasReleasedThisFrame())
+        {
+            Debug.Log("Is Shoot False");
+
+            isShooting = false;
         }
     }
 

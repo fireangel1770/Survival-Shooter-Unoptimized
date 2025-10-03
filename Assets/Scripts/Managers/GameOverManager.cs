@@ -8,7 +8,7 @@ public class GameOverManager : MonoBehaviour
 
     Animator anim;
 	float restartTimer;
-
+    [SerializeField] HpOS playerHpVal;
 
     void Awake()
     {
@@ -18,7 +18,7 @@ public class GameOverManager : MonoBehaviour
 
     void Update()
     {
-        if (playerHealth.currentHealth <= 0)
+        if (playerHpVal.currentPlayerHealth <= 0)
         {
             anim.SetTrigger("GameOver");
 

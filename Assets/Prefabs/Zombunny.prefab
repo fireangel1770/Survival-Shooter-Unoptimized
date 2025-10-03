@@ -5273,6 +5273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0.5
   attackDamage: 10
+  HpVal: {fileID: 11400000, guid: f03ea1a5744ae104aadd8e358408dba2, type: 2}
 --- !u!114 &114491779595983746
 MonoBehaviour:
   m_ObjectHideFlags: 0

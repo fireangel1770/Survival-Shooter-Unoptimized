@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
     }
     void Update ()
     {
-        if (GetComponent<EnemyHealth>().currentHealth > 0 && player.GetComponent<PlayerHealth>().currentHealth > 0)
+        if (GetComponent<EnemyHealth>().currentHealth > 0 && player.GetComponent<PlayerHealth>().HpVal.currentPlayerHealth > 0)
         {
             GetComponent<NavMeshAgent>().SetDestination (player.position);
         }

@@ -39,7 +39,7 @@
                     "name": "",
                     "id": "de9a37a1-74ce-4be8-b7c1-4265764ae108",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "Hold(duration=0.1,pressPoint=0.1)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Fire",
