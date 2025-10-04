@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class EnemyHealth : MonoBehaviour
@@ -89,7 +90,11 @@ public class EnemyHealth : MonoBehaviour
         enemyAudio.clip = deathClip;
         enemyAudio.Play ();
     }
-
+    IEnumerator DisableEnemy()
+    {
+        yield return new WaitForSeconds(3);
+        gameObject.SetActive (false);
+    }
 
     public void StartSinking ()
     {
@@ -97,6 +102,7 @@ public class EnemyHealth : MonoBehaviour
         GetComponent <Rigidbody> ().isKinematic = true;
         isSinking = true;
         UpdateScore?.Invoke(scoreValue);
-        //
+        StartCoroutine(DisableEnemy());
+
     }
 }
