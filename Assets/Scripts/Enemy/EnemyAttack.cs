@@ -3,9 +3,7 @@ using System.Collections;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float timeBetweenAttacks = 0.5f;
-    public int attackDamage = 10;
-
+    [SerializeField] public EnemyStatsSO EnemyStatsSO;
 
     Animator anim;
     GameObject player;
@@ -50,7 +48,7 @@ public class EnemyAttack : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
+        if(timer >= EnemyStatsSO.timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
         {
             Attack ();
         }
@@ -68,7 +66,7 @@ public class EnemyAttack : MonoBehaviour
 
         if(HpVal.currentPlayerHealth > 0)
         {
-            playerHealth.TakeDamage (attackDamage);
+            playerHealth.TakeDamage (EnemyStatsSO.attackDamage);
         }
     }
 }

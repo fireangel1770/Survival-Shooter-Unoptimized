@@ -4,12 +4,10 @@ using UnityEngine.Events;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int startingHealth = 100;
+    [SerializeField] public EnemyStatsSO EnemyStatsSO;
     public int currentHealth;
-    public float sinkSpeed = 2.5f;
-    public int scoreValue = 10;
-    public AudioClip deathClip;
 
+    public AudioClip deathClip;
 
     Animator anim;
     AudioSource enemyAudio;
@@ -19,7 +17,7 @@ public class EnemyHealth : MonoBehaviour
     bool isSinking;
 
     float remainingTime = 0;
-    EnemyPool pool;
+    public EnemyPool pool;
 
     private string IsDead = "Dead";
 
@@ -47,7 +45,7 @@ public class EnemyHealth : MonoBehaviour
         hitParticles = GetComponentInChildren <ParticleSystem> ();
         capsuleCollider = GetComponent <CapsuleCollider> ();
 
-        currentHealth = startingHealth;
+        currentHealth = EnemyStatsSO.startingHealth;
     }
 
 
@@ -55,7 +53,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if(isSinking)
         {
-            transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
+            transform.Translate (-Vector3.up * EnemyStatsSO.sinkSpeed * Time.deltaTime);
         }
     }
 
@@ -101,7 +99,7 @@ public class EnemyHealth : MonoBehaviour
         GetComponent <UnityEngine.AI.NavMeshAgent> ().enabled = false;
         GetComponent <Rigidbody> ().isKinematic = true;
         isSinking = true;
-        UpdateScore?.Invoke(scoreValue);
+        UpdateScore?.Invoke(EnemyStatsSO.scoreValue);
         StartCoroutine(DisableEnemy());
 
     }

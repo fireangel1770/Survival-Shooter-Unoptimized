@@ -8,7 +8,7 @@ public class EnemyPool : MonoBehaviour
 
     Queue<EnemyHealth> remainingEnemies = new Queue<EnemyHealth>();
 
-    // Start is called once
+    // Start is called once //
     void Awake()
     {
         for (int i = 0; i < enemyAmount; i++)
@@ -27,7 +27,6 @@ public class EnemyPool : MonoBehaviour
             current.transform.position = location;
         }
     }
-
     public void AddToQueue(EnemyHealth enemy)
     {
         remainingEnemies.Enqueue(enemy);
