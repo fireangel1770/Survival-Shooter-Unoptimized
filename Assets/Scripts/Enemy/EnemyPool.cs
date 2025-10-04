@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 public class EnemyPool : MonoBehaviour
 {
-    [SerializeField] EnemyMovement enemyPrefab;
+    [SerializeField] EnemyHealth enemyPrefab;
     [SerializeField] int enemyAmount;
 
-    Queue<EnemyMovement> remainingEnemies = new Queue<EnemyMovement>();
+    Queue<EnemyHealth> remainingEnemies = new Queue<EnemyHealth>();
 
     // Start is called once
-    void Start()
+    void Awake()
     {
         for (int i = 0; i < enemyAmount; i++)
         {
@@ -18,10 +18,20 @@ public class EnemyPool : MonoBehaviour
             b.gameObject.SetActive(false);
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SpawnEnemyAtLocation(Vector3 location)
     {
-        
+        if (remainingEnemies.Count > 0)
+        {
+            var current = remainingEnemies.Dequeue();
+            current.gameObject.SetActive(true);
+            current.transform.position = location;
+        }
     }
+
+    public void AddToQueue(EnemyHealth enemy)
+    {
+        remainingEnemies.Enqueue(enemy);
+    }
+
+
 }

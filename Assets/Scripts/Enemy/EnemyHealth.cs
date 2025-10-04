@@ -17,10 +17,28 @@ public class EnemyHealth : MonoBehaviour
     bool isDead;
     bool isSinking;
 
+    float remainingTime = 0;
+    EnemyPool pool;
+
     private string IsDead = "Dead";
 
     public UnityEvent<int> UpdateScore;
-    
+
+    private void OnEnable()
+    {
+        remainingTime = 3;
+    }
+    private void OnDisable()
+    {
+        if(pool != null)
+        {
+            pool.AddToQueue(this);
+        }
+    }
+    public void SetPool(EnemyPool ep)
+    {
+        pool = ep;
+    }
     void Awake ()
     {
         anim = GetComponent <Animator> ();
@@ -79,6 +97,6 @@ public class EnemyHealth : MonoBehaviour
         GetComponent <Rigidbody> ().isKinematic = true;
         isSinking = true;
         UpdateScore?.Invoke(scoreValue);
-        Destroy (gameObject, 2f);
+        //
     }
 }
